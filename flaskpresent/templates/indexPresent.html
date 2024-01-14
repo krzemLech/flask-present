@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Flask Templates - Present</title>
+{% endblock %}
+{% block content %}
+{% if form.errors %}
+<div class="alert alert-info text-left" role="alert">
+    <ul class="errors">
+        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+        {% for error in field_errors %}
+        <li><strong>{{ form[field_name].label }}:</strong> {{ error }}</li>
+        {% endfor %}
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+<div class="container">
+    <div class="table-wrapper d-flex flex-column">
+        <h2 class="title table-title text-center">Lista Prezentów</h2>
+        <table class="table table-stripped table-dark">
+            <thead class="table-info">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col" class="link">Link</th>
+                    <th scope="col">Cena</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr class="item">
+                    <th scope="row" class="td">{{ item.id }}</th>
+                    <td>{{ item.name }}</td>
+                    <td class="link">{{ item.link }}</td>
+                    <td>{{ item.price }} zł <a class="delete-item"
+                            href="{{ url_for('delete_present', present_id=item.id, style=style_no) }}"><i
+                                class="far fa-times-circle"></i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <h2 class="title form-title">Dodaj Prezent</h2>
+    <div class="form-wrapper">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group inputPresent">
+                <div class="label"><i class="fas fa-gift"></i></div>
+                {{ form.name(class="form-control", placeholder="Nazwa prezentu", id="inputPresent") }}
+            </div>
+            <div class="form-group inputUrl">
+                <div class="label"><i class="fas fa-link"></i></div>
+                {{ form.link(class="form-control", placeholder="Link", id="inputUrl") }}
+            </div>
+            <div class="form-group inputPrice">
+                <div class="label"><i class="fas fa-dollar-sign"></i></div>
+                {{ form.price(class="form-control num-input", placeholder="Cena", id="inputPrice") }}
+            </div>
+            <div class="btn-wrapper">
+                <button type="submit" class="btn btn-outline-light">DODAJ</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

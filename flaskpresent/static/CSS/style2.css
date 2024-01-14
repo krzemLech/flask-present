@@ -1,0 +1,231 @@
+/*** styling for the second template with sound-cloudy background and neu-morphic form ***/
+
+body {
+    --bg-orange: #FE8C00;
+    --bg-red: #F83600;
+    --dark-grey: #2A2C2B;
+    --light-grey: #545655;
+    margin: 0;
+    padding: 0px;
+    background-image: linear-gradient(to right, var(--bg-orange), var(--bg-red));
+    font-family: 'Montserrat' ;
+}
+
+/* Nav Bar */
+
+i.fa-gift {
+    color: var(--dark-grey);
+}
+
+div.ribbon {
+    background-color: var(--light-grey);
+}
+
+.ribbon:hover i {
+    color: var(--bg-orange);
+    filter: drop-shadow(1px 1px 10px var(--bg-orange));
+}
+
+/* Table */
+
+h2.title {
+    color: black;
+    text-align: center;
+    margin: 50px auto;
+}
+
+thead {
+    width: 100%;
+    height: 49px;
+    background-color: rgba(0, 0, 0, .3);
+    border: none;
+}
+
+div.table-wrapper {
+    border: solid 2px black;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.table {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.table th.titles {
+    border-top: none;
+    border-bottom: solid 1px black;
+    padding: 10px 12px;
+}
+
+
+/* delete button */
+
+
+a.delete-item {
+    float: right;
+    cursor: pointer;
+    color: black;
+    opacity: .5;
+}
+
+a.delete-item i {
+    border-radius: 50%;
+}
+
+a.delete-item:hover {
+    opacity: 1;
+}
+
+a.delete-item i:hover {
+    box-shadow: 0 0 5px red;
+}
+
+/* Form */
+
+/* eliminating all focus effects in different browsers, vital for the dark neu-morphic design */
+input:hover, 
+input:active, 
+input:focus,
+.btn:active,
+.btn.active
+.btn:hover
+{
+    outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+}
+
+div.form-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+div.form-base {
+    width: 340px;
+    height: 400px;
+    background: var(--dark-grey);
+    box-shadow: inset 4px 4px 10px rgba(229, 229, 229, 0.25), inset -4px -4px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+}
+
+h2.form-title {
+    color: #c4c4c4;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+div.form-group {
+    width: 300px;
+}
+
+input.form-control {
+    border: none;
+    background: var(--dark-grey);
+    box-shadow: -3px -3px 15px rgba(229, 229, 229, 0.15), 3px 3px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+input.form-control:focus {
+    border: solid 1px white;
+    color: white;
+    background-color:var(--dark-grey);
+}
+
+input.form-control:focus::placeholder {
+    color: #484948;
+}
+
+/* To eliminate the light color for the autofill "!important" was necessary  */
+input.form-control:-webkit-autofill {
+    border: solid 1px white;
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0 30px var(--dark-grey) inset !important;
+}
+
+ul.errors li {
+    list-style-type: none;
+    text-align: center;
+}
+
+ul.errors {
+    margin: 0;
+    padding: 0;
+}
+
+div.btn-wrapper {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.btn {
+    width: 50px;
+    height: 50px;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: rgba(84, 86, 85, 0.8);
+    border-radius: 40px;
+    box-shadow: -3px -3px 15px rgba(229, 229, 229, 0.15), 3px 3px 15px rgba(0, 0, 0, 0.5);
+    border: none;
+}
+
+.btn:hover {
+    box-shadow: none;
+}
+
+.btn:hover i {
+    color: var(--bg-red);
+    filter: drop-shadow(1px 1px 10px var(--bg-red));
+}
+
+input.filled {
+    box-shadow: none;
+    border: solid 1px white;
+    color: white;
+    background-color: var(--dark-grey);
+}
+
+
+/* RWD */
+
+@media (max-width: 500px) {
+    td.link, th.link {
+        box-sizing: border-box;
+        max-width: 100px;
+        overflow: hidden;
+        text-align: center;
+        margin: 0;
+    }
+}
+
+@media (max-width: 400px) {
+    div.table-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .link {
+        display: none;
+    }
+    
+    button.btn {
+        margin: 10px !important;
+    }
+}

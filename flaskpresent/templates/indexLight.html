@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Flask Templates</title>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="table-wrapper d-flex flex-column">
+        <h2 class="title table-title text-center">Lista Prezentów</h2>
+        <div class="table-wrapper-inner">
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nazwa</th>
+                        <th scope="col" class="link">Link</th>
+                        <th scope="col">Cena</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr class="item">
+                        <th scope="row" class="td">{{ item.id }}</th>
+                        <td>{{ item.name }}</td>
+                        <td class="link">{{ item.link }}</td>
+                        <td>{{ item.price }} zł </td>
+                        <td>
+                            <div class="delete-holder"><a class="delete-item"
+                                    href="{{ url_for('delete_present', present_id=item.id, style=style_no) }}"><i
+                                        class="far fa-times-circle"></i></a></div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form-wrapper">
+        <h2 class="title form-title">Dodaj Prezent</h2>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.name(class="form-control", placeholder="Nazwa prezentu") }}
+                {% if form.name.errors %}
+                <ul class="errors">{% for error in form.name.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+                <!-- <input type="text" class="form-control" name="name" id="inputPresent" placeholder="Nazwa prezentu"> -->
+            </div>
+            <div class="form-group">
+                {{ form.link(class="form-control", placeholder="Link") }}
+                {% if form.link.errors %}
+                <ul class="errors">{% for error in form.link.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+                <!-- <input type="text" class="form-control" name="link" id="inputUrl" placeholder="Link"> -->
+            </div>
+            <div class="form-group">
+                {{ form.price(class="form-control num-input", placeholder="Cena") }}
+                {% if form.price.errors %}
+                <ul class="errors">{% for error in form.price.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+                <!-- <input type="number" class="form-control" name="price" id="inputPrice" placeholder="Cena"> -->
+            </div>
+            <div class="btn-wrapper">
+                <button type="submit" class="btn">dodaj</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

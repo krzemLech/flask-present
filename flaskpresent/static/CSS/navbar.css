@@ -1,0 +1,70 @@
+/*** one styling styling for the navbar, for all sections  ***/
+
+section.navbar {
+    padding: 0;
+}
+
+div.ribbon {
+    /* background color defined in particular option css file */
+    height: 200px;
+    clip-path: polygon(100% 0, 100% 100%, 50% 80%, 0 100%, 0 0);
+    z-index: 11;
+}
+
+div.ribbon-wrapper {
+    position: absolute;
+    max-width: 72px;
+    margin-left: 20px;
+    top: 0;
+    left: 0;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, .2));
+    z-index: 11;
+}
+
+div.ribbon i.fa-gift {
+    /* color defined in particular option css file */
+    margin: 45px 20px auto 20px;
+}
+
+nav {
+    width: 100%;
+    min-height: 130px;
+    background-color: black;
+}
+
+div.navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+a.nav-item {
+    margin: 0px 20px;
+}
+
+div.alert-wrapper {
+    position: absolute;
+    top: 130px;
+    left: 0;
+    right: 0;
+}
+
+div.alert {
+    border-radius: 0;
+}
+
+@media (max-width: 993px) {
+    
+    nav.navbar.navbar-dark {
+        display: inline-block;
+    }
+
+    a.nav-item {
+        margin-left: 90px;
+    }
+    button.navbar-toggler {
+        position: absolute;
+        right: 10px;
+    }
+
+}
